@@ -1,8 +1,10 @@
 <script>
-	import Fa from 'svelte-fa'
-	import { faFlag } from '@fortawesome/free-solid-svg-icons'
+	import { Canvas } from '@threlte/core'
+	import Scene from '$lib/components/Scene.svelte'
 </script>
-<div class="text-white">
-	New app
-	<Fa icon={faFlag} />
+<div class="w-full h-full min-h-screen relative">
+	<Canvas>
+		<Scene />
+	</Canvas>
+
 </div>
