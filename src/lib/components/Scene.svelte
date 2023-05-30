@@ -1,6 +1,6 @@
 <script>
 	import { T, useFrame } from '@threlte/core'
-	import { HTML, OrbitControls } from '@threlte/extras'
+	import { HTML, OrbitControls, Environment } from '@threlte/extras'
 	import { onMount } from 'svelte';
 	import { animate, timeline } from "motion";
 	import { state } from '$lib/js/store';
@@ -9,9 +9,11 @@
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut, circOut } from 'svelte/easing';
 
+	let mars, testing = 0, zoomDuration = 6000;
+
 	const cameraZoom = tweened(24, {
-		duration: 6000,
-		easing: circOut
+		duration: zoomDuration,
+		easing: $state.controls ? cubicInOut : circOut
 	})
 
 	const directionalLightIntensity = tweened(0, {
@@ -29,14 +31,19 @@
 	import Mars from '$lib/components/Mars.svelte';
 
 
-	let mars, testing = 0;
 	$state.controls = false;
+	$state.controlsVisible = true;
 	console.log("mars", mars);;
 	let rotation = 0;
 
 	useFrame(() => {
 			rotation += 0.002;
 	});
+
+	const zoomToMars = () => {
+		zoomDuration = 6000;
+		$cameraZoom = 6;
+	}
 
 	onMount(() => {
 		$cameraZoom = 12
@@ -61,6 +68,15 @@
 
 
 </script>
+
+<!--
+<Environment
+  path = '/'
+  files='enviroment.jpg'
+  isBackground={true}
+  groundProjection={{ radius: 2000, height: 5, scale: {x: 100,y: 100,z: 100} }}
+/>
+-->
 
 <T.DirectionalLight
 	intensity={$directionalLightIntensity}
@@ -92,8 +108,8 @@
 		transform
 	>
 		<div class="flex flex-col items-center" id="note-pointer">
-			<button class="bg-white/10 px-3 h-8 rounded-full w-auto border flex items-center gap-2 border-white/30 text-white hover:opacity-90 active:opacity-70 text-xs hover:bg-orange-500 hover:border-orange-300 transition-colors duration-300 group">
-				<div class="w-2 h-2 rounded-full bg-orange-500 transition-color duration-300 group-hover:bg-white"/>
+			<button class="bg-white/10 px-3 h-8 rounded-full w-auto border flex items-center gap-2 border-white/30 text-white active:opacity-70 text-xs transition-colors duration-300 group {$state.controls ? "cursor-pointer hover:opacity-90 hover:bg-orange-500 hover:border-orange-300 " : "cursor-not-allowed"}" on:click={zoomToMars} disabled={!$state.controls}>
+				<div class="w-2 h-2 rounded-full bg-orange-500 transition-color duration-300 {$state.controls && "group-hover:bg-white"}"/>
 				<div>Mars</div>
 			</button>
 			<div class="w-px bg-white/30" id="note-track"></div>
@@ -104,7 +120,7 @@
 		position.z={0}
 		transform
 	>
-		<div class="text-white/80 uppercase tracking-widest text-[6px] text-center transition-opacity duration-[1s] {$state.controls ? "opacity-100" : "opacity-0"}" id="interact-note">You can now interact<br />with the planet.</div>
+		<div class="text-white/80 uppercase tracking-widest text-[6px] text-center transition-opacity duration-[1s] {($state.controls && $state.controlsVisible) ? "opacity-100" : "opacity-0"}" id="interact-note">You can now interact<br />with the planet.</div>
 	</HTML>
 </T.Mesh>
 <!--
