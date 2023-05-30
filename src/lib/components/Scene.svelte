@@ -117,8 +117,8 @@
 		transform
 	>
 		<div
-			class="flex flex-col items-center justify-start transition-all duration-[2s]
-			{$state.controlsVisible ? "translate-y-0 opacity-100" : "-translate-y-[30%] opacity-0"}"
+			class="flex flex-col items-center justify-start transition-all
+			{$state.controlsVisible ? "translate-y-0 opacity-100 duration-[2s]" : "-translate-y-[30%] opacity-0 duration-500"}"
 			id="note-pointer">
 			<button
 				class="bg-white/10 px-3 h-8 rounded-full w-auto border flex items-center gap-2 border-white/30 text-white active:opacity-70 text-xs transition-colors duration-300 group
@@ -132,7 +132,7 @@
 				/>
 				<div>Mars</div>
 			</button>
-			<div class="w-px bg-white/30 absolute top-8 transition-all duration-[2s] {$state.controlsVisible ? "h-10" : "h-0"}" id="note-track"></div>
+			<div class="w-px bg-white/30 absolute top-8 transition-all {$state.controlsVisible ? "h-10 duration-[2s]" : "h-0 duration-500"}" id="note-track"></div>
 		</div>
 	</HTML>
 	<HTML
@@ -140,7 +140,7 @@
 		position.z={0}
 		transform
 	>
-		<div class="text-white/80 uppercase tracking-widest text-[6px] text-center transition-opacity duration-[1s] {($state.controls && $state.controlsVisible) ? "opacity-100" : "opacity-0"}" id="interact-note">You can now interact<br />with the planet.</div>
+		<div class="text-white/80 uppercase tracking-widest text-[6px] text-center transition-opacity {($state.controls && $state.controlsVisible) ? "opacity-100 duration-[1s]" : "opacity-0 duration-500"}" id="interact-note">You can now interact<br />with the planet.</div>
 	</HTML>
 </T.Mesh>
 <!--
