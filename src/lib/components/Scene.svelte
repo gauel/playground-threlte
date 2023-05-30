@@ -32,7 +32,7 @@
 
 
 	$state.controls = false;
-	$state.controlsVisible = true;
+	$state.controlsVisible = false;
 	console.log("mars", mars);;
 	let rotation = 0;
 
@@ -57,13 +57,22 @@
 
 		//animate((progress) => {testing = progress}, { duration: 2, delay: 6 })
 
-
+		/*
 		timeline([
 			["#note-pointer", {opacity: [0, 1]}, { duration: 2, delay: 6 }],
 			["#note-track", {height: ["0rem", "2rem"]}, { duration: 2, at: "-2"}]
 		]).finished.then(() => {
 			$state.controls = true;
 		});
+		*/
+
+		setTimeout(() => {
+			$state.controlsVisible = true;
+		}, 5000)
+		
+		setTimeout(() => {
+			$state.controls = true;
+		}, 6000)
 	})
 
 
@@ -103,16 +112,27 @@
 
 <T.Mesh position.y={0}>
 	<HTML
-		position.y={2}
+		position.y={2.5}
 		position.z={0}
 		transform
 	>
-		<div class="flex flex-col items-center" id="note-pointer">
-			<button class="bg-white/10 px-3 h-8 rounded-full w-auto border flex items-center gap-2 border-white/30 text-white active:opacity-70 text-xs transition-colors duration-300 group {$state.controls ? "cursor-pointer hover:opacity-90 hover:bg-orange-500 hover:border-orange-300 " : "cursor-not-allowed"}" on:click={zoomToMars} disabled={!$state.controls}>
-				<div class="w-2 h-2 rounded-full bg-orange-500 transition-color duration-300 {$state.controls && "group-hover:bg-white"}"/>
+		<div
+			class="flex flex-col items-center justify-start transition-all duration-[2s]
+			{$state.controlsVisible ? "translate-y-0 opacity-100" : "-translate-y-[30%] opacity-0"}"
+			id="note-pointer">
+			<button
+				class="bg-white/10 px-3 h-8 rounded-full w-auto border flex items-center gap-2 border-white/30 text-white active:opacity-70 text-xs transition-colors duration-300 group
+				{$state.controls ? "cursor-pointer hover:opacity-90 hover:bg-orange-500 hover:border-orange-300 " : "cursor-not-allowed"}"
+				on:click={zoomToMars}
+				disabled={!$state.controls}
+			>
+				<div
+					class="w-2 h-2 rounded-full bg-orange-500 transition-color duration-300
+					{$state.controls && "group-hover:bg-white"}"
+				/>
 				<div>Mars</div>
 			</button>
-			<div class="w-px bg-white/30" id="note-track"></div>
+			<div class="w-px bg-white/30 absolute top-8 transition-all duration-[2s] {$state.controlsVisible ? "h-10" : "h-0"}" id="note-track"></div>
 		</div>
 	</HTML>
 	<HTML

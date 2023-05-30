@@ -5,14 +5,11 @@
 	import { timeline } from "motion";
 
 	const hideUI = () => {
-		timeline([
-			["#note-pointer, #interact-note", {opacity: [null, 0]}, { duration: 0.5 }],
-			["#note-track", {height: [null, "0rem"]}, { duration: 0.5, at: "<"}]
-		])
+		$state.controlsVisible = false;
 	}
 
 </script>
-<button class="w-full h-full min-h-screen relative {$state.controls ? "cursor-grab active:cursor-grabbing" : "cursor-not-allowed"}" disabled={!$state.controls} on:mousedown={hideUI}>
+<button class="w-full h-full min-h-screen relative {$state.controls ? "cursor-grab active:cursor-grabbing" : "cursor-not-allowed"}" disabled={!$state.controls} on:mousedown={$state.controls && hideUI} on:touchstart={$state.controls && hideUI}>
 	<Canvas>
 		<Scene />
 	</Canvas>
