@@ -2,10 +2,10 @@
 	import "$lib/app.css"
 
 	/* SEO */
-	let title = "Page title",
-	description = "Description",
+	let title = "Wonder Makers playground",
+	description = "Testing Threlte and Motion One",
 	shareImage = "/ogimage.jpg",
-	themeColor = "#10171D";
+	themeColor = "#000";
 </script>
 
 <!-- Hardcoded SEO -->
