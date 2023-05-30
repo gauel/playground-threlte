@@ -28,5 +28,5 @@ const storeDefaults = {}
 /* These settings are global variables that resets with every page refresh */
 const stateDefaults = {}
 
-export const store = store("settings", storeDefaults, true);
-export const state = store("glob", stateDefaults);
+export const settings = store("settings", storeDefaults, true);
+export const state = store("state", stateDefaults);

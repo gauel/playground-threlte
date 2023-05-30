@@ -26,8 +26,6 @@
  * ```
  */
 declare module '$env/static/private' {
-	export const ACSetupSvcPort: string;
-	export const ACSvcPort: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
 	export const ChocolateyInstall: string;
@@ -38,8 +36,14 @@ declare module '$env/static/private' {
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
+	export const configsetroot: string;
+	export const DokanLibrary1: string;
+	export const DokanLibrary1_LibraryPath_x64: string;
+	export const DokanLibrary1_LibraryPath_x86: string;
 	export const DriverData: string;
-	export const EFC_43880: string;
+	export const EFC_18096: string;
+	export const FPS_BROWSER_APP_PROFILE_STRING: string;
+	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const GIT_ASKPASS: string;
 	export const HOME: string;
 	export const HOMEDRIVE: string;
@@ -53,9 +57,7 @@ declare module '$env/static/private' {
 	export const NODE: string;
 	export const NODE_ENV: string;
 	export const NODE_PATH: string;
-	export const npm_command: string;
 	export const npm_config_engine_strict: string;
-	export const npm_config_node_gyp: string;
 	export const npm_config_registry: string;
 	export const npm_config_resolution_mode: string;
 	export const npm_config_user_agent: string;
@@ -63,6 +65,7 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const npm_lifecycle_script: string;
 	export const npm_node_execpath: string;
+	export const npm_package_dependencies_motion: string;
 	export const npm_package_dependencies_svelte_fa: string;
 	export const npm_package_dependencies_three: string;
 	export const npm_package_dependencies__fontsource_inter: string;
@@ -101,10 +104,8 @@ declare module '$env/static/private' {
 	export const npm_package_type: string;
 	export const npm_package_version: string;
 	export const NUMBER_OF_PROCESSORS: string;
-	export const NVM_HOME: string;
-	export const NVM_SYMLINK: string;
 	export const OneDrive: string;
-	export const OneDriveConsumer: string;
+	export const OneDriveCommercial: string;
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const OS: string;
 	export const Path: string;
@@ -121,7 +122,6 @@ declare module '$env/static/private' {
 	export const PROMPT: string;
 	export const PSModulePath: string;
 	export const PUBLIC: string;
-	export const RlsSvcPort: string;
 	export const SESSIONNAME: string;
 	export const SystemDrive: string;
 	export const SystemRoot: string;
@@ -168,8 +168,6 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
-		ACSetupSvcPort: string;
-		ACSvcPort: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
 		ChocolateyInstall: string;
@@ -180,8 +178,14 @@ declare module '$env/dynamic/private' {
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
 		ComSpec: string;
+		configsetroot: string;
+		DokanLibrary1: string;
+		DokanLibrary1_LibraryPath_x64: string;
+		DokanLibrary1_LibraryPath_x86: string;
 		DriverData: string;
-		EFC_43880: string;
+		EFC_18096: string;
+		FPS_BROWSER_APP_PROFILE_STRING: string;
+		FPS_BROWSER_USER_PROFILE_STRING: string;
 		GIT_ASKPASS: string;
 		HOME: string;
 		HOMEDRIVE: string;
@@ -195,9 +199,7 @@ declare module '$env/dynamic/private' {
 		NODE: string;
 		NODE_ENV: string;
 		NODE_PATH: string;
-		npm_command: string;
 		npm_config_engine_strict: string;
-		npm_config_node_gyp: string;
 		npm_config_registry: string;
 		npm_config_resolution_mode: string;
 		npm_config_user_agent: string;
@@ -205,6 +207,7 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		npm_lifecycle_script: string;
 		npm_node_execpath: string;
+		npm_package_dependencies_motion: string;
 		npm_package_dependencies_svelte_fa: string;
 		npm_package_dependencies_three: string;
 		npm_package_dependencies__fontsource_inter: string;
@@ -243,10 +246,8 @@ declare module '$env/dynamic/private' {
 		npm_package_type: string;
 		npm_package_version: string;
 		NUMBER_OF_PROCESSORS: string;
-		NVM_HOME: string;
-		NVM_SYMLINK: string;
 		OneDrive: string;
-		OneDriveConsumer: string;
+		OneDriveCommercial: string;
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		OS: string;
 		Path: string;
@@ -263,7 +264,6 @@ declare module '$env/dynamic/private' {
 		PROMPT: string;
 		PSModulePath: string;
 		PUBLIC: string;
-		RlsSvcPort: string;
 		SESSIONNAME: string;
 		SystemDrive: string;
 		SystemRoot: string;
