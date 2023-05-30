@@ -1,21 +1,49 @@
 <script>
 	import { T, useFrame } from '@threlte/core'
 	import { HTML, OrbitControls } from '@threlte/extras'
+	import { onMount } from 'svelte';
+	import { tweened } from 'svelte/motion';
+	import { cubicInOut } from 'svelte/easing';
+
+	const cameraZoom = tweened(24, {
+		duration: 6000,
+		easing: cubicInOut
+	})
+
+	const directionalLightIntensity = tweened(0, {
+		duration: 6000,
+		easing: cubicInOut
+	})
+
+	const ambientLightIntensity = tweened(0, {
+		duration: 6000,
+		easing: cubicInOut
+	})
 	
 	import Mars from '$lib/components/Mars.svelte';
 
 
 	let mars;
+	console.log("mars", mars);;
 	let rotation = 0;
 
 	useFrame(() => {
         rotation += 0.002;
     });
 
+	onMount(() => {
+		setTimeout(() => {
+			$cameraZoom = 12
+			$directionalLightIntensity = 1;
+			$ambientLightIntensity = 0.05;
+		}, 2000)
+	})
+
+
 </script>
 
 <T.DirectionalLight
-	intensity={1}
+	intensity={$directionalLightIntensity}
 	position.x={80}
 	position.y={80}
 	position.z={20}
@@ -24,7 +52,7 @@
 <T.PerspectiveCamera
 	makeDefault
 	position.y={0}
-	position.z={16}
+	position.z={$cameraZoom}
 >
   <OrbitControls
 	enableZoom={true}
@@ -32,7 +60,7 @@
   />
 </T.PerspectiveCamera>
 
-<T.AmbientLight intensity={.05} />
+<T.AmbientLight intensity={$ambientLightIntensity} />
 
 <Mars rotation.z={-180} rotation.y={rotation} ref={mars} />
 
