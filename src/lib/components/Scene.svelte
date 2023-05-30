@@ -53,8 +53,7 @@
 
 		timeline([
 			["#note-pointer", {opacity: [0, 1]}, { duration: 2, delay: 6 }],
-			["#note-track", {height: ["0rem", "2rem"]}, { duration: 2, at: "-2"}],
-			["#interact-note", {opacity: [0, 1]}, {duration: 2}]
+			["#note-track", {height: ["0rem", "2rem"]}, { duration: 2, at: "-2"}]
 		]).finished.then(() => {
 			$state.controls = true;
 		});
@@ -105,7 +104,7 @@
 		position.z={0}
 		transform
 	>
-		<div class="text-white/80 uppercase tracking-widest text-[6px] text-center" id="interact-note">You can now interact<br />with the planet.</div>
+		<div class="text-white/80 uppercase tracking-widest text-[6px] text-center transition-opacity duration-[1s] {$state.controls ? "opacity-100" : "opacity-0"}" id="interact-note">You can now interact<br />with the planet.</div>
 	</HTML>
 </T.Mesh>
 <!--
